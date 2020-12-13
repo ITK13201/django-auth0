@@ -22,7 +22,8 @@ from .settings_common import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('backend.home.urls'))
+    path('', include('social_django.urls')),
+    path('', include('backend.home.urls')),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

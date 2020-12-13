@@ -22,9 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +34,9 @@ INSTALLED_APPS = [
     # backend apps
     'backend.home.apps.HomeConfig',
     'backend.users.apps.UsersConfig',
+
+    # auth0 app
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +64,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.static'
             ],
         },
     },
@@ -119,3 +118,23 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.User'
+
+# Auth0 settings
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get('AUTH0_CLIENT_ID')
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('AUTH0_CLIENT_SECRET')
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.auth0.Auth0OAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
