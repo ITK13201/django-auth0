@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # backend apps
     'backend.home.apps.HomeConfig',
     'backend.users.apps.UsersConfig',
+    'backend.auth0.apps.Auth0Config',
 
     # auth0 app
     'social_django',
@@ -131,10 +132,10 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 ]
 
 AUTHENTICATION_BACKENDS = {
-    'social_core.backends.auth0.Auth0OAuth2',
+    'backend.auth0.auth0backend.Auth0',
     'django.contrib.auth.backends.ModelBackend'
 }
 
-LOGIN_URL = '/login/auth0'
+LOGIN_URL = '/login/auth0/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
