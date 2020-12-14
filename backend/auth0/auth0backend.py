@@ -10,7 +10,7 @@ class Auth0(BaseOAuth2):
     ACCESS_TOKEN_METHOD = 'POST'
     REDIRECT_STATE = False
     EXTRA_DATA = [
-        ('image', 'image'),
+        ('image', 'picture'),
         ('email', 'email')
     ]
 
@@ -30,10 +30,11 @@ class Auth0(BaseOAuth2):
         jwks = request.urlopen('https://' + self.setting('DOMAIN') + '/.well-known/jwks.json')
         issuer = 'https://' + self.setting('DOMAIN') + '/'
         audience = self.setting('KEY')  # CLIENT_ID
+
         payload = jwt.decode(id_token, jwks.read(), algorithms=['RS256'], audience=audience, issuer=issuer)
 
         return {'username': payload['nickname'],
                 'first_name': payload['name'],
-                'image': payload['image'],
+                'image': payload['picture'],
                 'id': payload['sub'],
                 'email': payload['email']}

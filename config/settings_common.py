@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'backend.home.apps.HomeConfig',
     'backend.users.apps.UsersConfig',
     'backend.auth0.apps.Auth0Config',
+    'backend.mypage.apps.MypageConfig',
 
     # auth0 app
     'social_django',
@@ -137,5 +138,5 @@ AUTHENTICATION_BACKENDS = {
 }
 
 LOGIN_URL = '/login/auth0/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/mypage'
 LOGOUT_REDIRECT_URL = '/'

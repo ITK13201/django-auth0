@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+django-auth0 | mypage
+{% endblock %}
+
+{% block main %}
+<h1 class="red">mypage</h1>
+<div class="align-content-center">
+  <ul>
+    <li>
+      <p>user_id (秘)</p>
+      {% comment %} <p>{{ user.id }}</p> {% endcomment %}
+    </li>
+    <li>
+      <p>{{ user.username }}</p>
+    </li>
+    <li>
+      <p>{{ user.first_name }}</p>
+    </li>
+    <li>
+      <p>email (秘)</p>
+      {% comment %} <p>{{ user.email }}</p> {% endcomment %}
+    </li>
+    <li>
+      <img src="{{ user.image }}" alt="">
+    </li>
+  </ul>
+</div>
+{% endblock %}
