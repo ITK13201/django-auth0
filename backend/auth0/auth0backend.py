@@ -10,7 +10,6 @@ class Auth0(BaseOAuth2):
     ACCESS_TOKEN_METHOD = 'POST'
     REDIRECT_STATE = False
     EXTRA_DATA = [
-        ('picture', 'picture'),
         ('email', 'email')
     ]
 
@@ -35,6 +34,5 @@ class Auth0(BaseOAuth2):
 
         return {'username': payload['nickname'],
                 'first_name': payload['name'],
-                'image': payload['picture'],
                 'id': payload['sub'],
                 'email': payload['email']}
