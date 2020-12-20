@@ -11,6 +11,11 @@ psycopg2-binary = "*"
 pillow = "*"
 python-jose = "*"
 social-auth-app-django = "*"
+django-heroku = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-cloudinary-storage = "*"
+django-cleanup = "*"
 
 [requires]
 python_version = "3.8"

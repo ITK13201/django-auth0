@@ -10,8 +10,7 @@ django-auth0 | mypage
 <div class="align-content-center">
   <ul>
     <li>
-      <p>user_id (秘)</p>
-      {% comment %} <p>{{ user.id }}</p> {% endcomment %}
+      <p>{{ user.id }}</p>
     </li>
     <li>
       <p>{{ user.username }}</p>
@@ -20,8 +19,7 @@ django-auth0 | mypage
       <p>{{ user.first_name }}</p>
     </li>
     <li>
-      <p>email (秘)</p>
-      {% comment %} <p>{{ user.email }}</p> {% endcomment %}
+      <p>{{ user.email }}</p>
     </li>
     <li>
       <img src="{{ user.image }}" alt="">

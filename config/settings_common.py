@@ -36,13 +36,21 @@ INSTALLED_APPS = [
     'backend.users.apps.UsersConfig',
     'backend.auth0.apps.Auth0Config',
     'backend.mypage.apps.MypageConfig',
-
     # auth0 app
     'social_django',
+    # cloudinary setting
+    'cloudinary',
+    'cloudinary_storage',
+    # django-cleanup
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+      # whitenoise setting
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -140,3 +148,10 @@ AUTHENTICATION_BACKENDS = {
 LOGIN_URL = '/login/auth0/'
 LOGIN_REDIRECT_URL = '/mypage'
 LOGOUT_REDIRECT_URL = '/'
+
+# cloudinary_storage setting
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+}

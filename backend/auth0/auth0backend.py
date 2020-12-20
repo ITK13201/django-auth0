@@ -10,7 +10,7 @@ class Auth0(BaseOAuth2):
     ACCESS_TOKEN_METHOD = 'POST'
     REDIRECT_STATE = False
     EXTRA_DATA = [
-        ('image', 'picture'),
+        ('picture', 'picture'),
         ('email', 'email')
     ]
 
